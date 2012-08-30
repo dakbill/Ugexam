@@ -51,10 +51,12 @@ def home(request):
 					vouch.Account=cust
 					vouch.date_used=datetime.now()
 					vouch.used=True			
+					boolexp='False'					
 					vouch.save()
 					cust.save()
 					t = loader.get_template('login/login.html')
-		    			c = Context({})
+					err_msg=""
+		    			c = Context({'error':err_msg,'boolexp':boolexp})
 					return HttpResponse(t.render(c))
 		    		except:
 		    			err_msg="Wrong scratch code"

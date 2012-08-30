@@ -43,7 +43,7 @@ def home(request):
 		lis=shlex.split(scode)
 		try:
 			vouch=Voucher.objects.get(num=lis[1])			
-			if(not Voucher.objects.get(num=lis[1]).used):			
+			if(not vouch.used):			
 				try:
 					vouch=Voucher.objects.get(num=lis[1])			
 					cust=Account.objects.get(accnum=lis[0])
@@ -51,11 +51,13 @@ def home(request):
 					vouch.Account=cust
 					vouch.date_used=datetime.now()
 					vouch.used=True			
+					boolexp='False'					
 					vouch.save()
 					cust.save()
 					t = loader.get_template('login/login.html')
-		    			c = Context({})
-					return HttpResponse(t.render(c))
+					err_msg=""
+		    			c = Context({'error':err_msg,'boolexp':boolexp})
+					return HttpResponseRedirect(t.render(c))
 		    		except:
 		    			err_msg="Wrong scratch code"
 		    			boolexp='True'
