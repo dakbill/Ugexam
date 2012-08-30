@@ -1,5 +1,5 @@
 from django.shortcuts import render_to_response
-from models import Account ,Voucher
+from recrep.models import Account ,Voucher
 from datetime import datetime,date
 from datetime import timedelta
 from django.template import Context, loader
@@ -40,8 +40,7 @@ def home(request):
 	if request.method=='POST':
 		scode=request.POST.get("scratchcode")		
 		lis=shlex.split(scode)
-		try:
-			print	type(lis[1])		
+		try:	
 			vouch=Voucher.objects.get(num=lis[1])			
 			if(not vouch.used):			
 				try:			
@@ -75,6 +74,10 @@ def home(request):
 	    		t = loader.get_template('login/login.html')
 	    		c = Context({'error':err_msg,'boolexp':boolexp})
 			return HttpResponse(t.render(c))
+	t = loader.get_template('login/login.html')
+	err_msg=""
+	c = Context({'error':err_msg,'boolexp':boolexp})
+	return HttpResponse(t.render(c))
 @csrf_exempt
 def send(request):
 	msgque=[]

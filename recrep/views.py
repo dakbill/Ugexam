@@ -1,5 +1,5 @@
 from django.shortcuts import render_to_response
-from models import Account ,Voucher
+from recrep.models import Account ,Voucher
 from datetime import datetime,date
 from datetime import timedelta
 from django.template import Context, loader
@@ -74,6 +74,11 @@ def home(request):
 	    		t = loader.get_template('login/login.html')
 	    		c = Context({'error':err_msg,'boolexp':boolexp})
 			return HttpResponse(t.render(c))
+	t = loader.get_template('login/login.html')
+	err_msg=""
+	boolexp='False'
+	c = Context({'error':err_msg,'boolexp':boolexp})
+	return HttpResponse(t.render(c))
 @csrf_exempt
 def send(request):
 	msgque=[]
