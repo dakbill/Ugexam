@@ -63,19 +63,19 @@ def home(request):
 		    			boolexp='True'
 		    			t = loader.get_template('login/login.html')
 		    			c = Context({'error':err_msg,'boolexp':boolexp})
-					return HttpResponse(t.render(c))
+					return HttpResponseRedirect(t.render(c))
 			else:
 				err_msg="Voucher already used"
 		    		boolexp='True'
 		    		t = loader.get_template('login/login.html')
 		    		c = Context({'error':err_msg,'boolexp':boolexp})
-				return HttpResponse(t.render(c))
+				return HttpResponseRedirect(t.render(c))
 		except:
 			err_msg="Voucher or account does not exist"
 	    		boolexp='True'
 	    		t = loader.get_template('login/login.html')
 	    		c = Context({'error':err_msg,'boolexp':boolexp})
-			return HttpResponse(t.render(c))
+			return HttpResponseRedirect(t.render(c))
 			
 	
     	t = loader.get_template('login/login.html')
