@@ -40,7 +40,7 @@ def home(request):
 	if request.method=='POST':
 		scode=request.POST.get("scratchcode")		
 		lis=shlex.split(scode)
-		try:
+		try:	
 			vouch=Voucher.objects.get(num=lis[1])			
 			if(not vouch.used):			
 				try:			
@@ -74,11 +74,6 @@ def home(request):
 	    		t = loader.get_template('login/login.html')
 	    		c = Context({'error':err_msg,'boolexp':boolexp})
 			return HttpResponse(t.render(c))
-			
-	
-    	t = loader.get_template('login/login.html')
-    	c = Context({})
-	return HttpResponse(t.render(c))
 @csrf_exempt
 def send(request):
 	msgque=[]

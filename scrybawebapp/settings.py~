@@ -13,7 +13,7 @@ ADMINS = (
 MANAGERS = ADMINS
 DATABASES = {
     'default' :
-	dj_database_url.config(default="sqlite:/susu.db")
+	dj_database_url.config(default="sqlite3:/susu.db")
 
 }
 # Local time zone for this installation. Choices can be found here:
@@ -96,8 +96,7 @@ ROOT_URLCONF = 'scrybawebapp.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'scrybawebapp.wsgi.application'
-# Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'susu.wsgi.application'
+
 
 TEMPLATE_DIRS = (
     os.path.join(SITE_ROOT, 'templates')
