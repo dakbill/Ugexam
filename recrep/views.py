@@ -38,14 +38,12 @@ def sms_search(sms):
 @csrf_exempt
 def home(request):
 	if request.method=='POST':
-		scode=request.POST.get("scratchcode")
-		print scode		
+		scode=request.POST.get("scratchcode")		
 		lis=shlex.split(scode)
 		try:
 			vouch=Voucher.objects.get(num=lis[1])			
 			if(not vouch.used):			
-				try:
-					vouch=Voucher.objects.get(num=lis[1])			
+				try:			
 					cust=Account.objects.get(accnum=lis[0])
 					cust.balance=cust.balance+vouch.amount
 					vouch.Account=cust
