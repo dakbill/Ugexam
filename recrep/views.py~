@@ -57,7 +57,7 @@ def home(request):
 					t = loader.get_template('login/login.html')
 					err_msg=""
 		    			c = Context({'error':err_msg,'boolexp':boolexp})
-					return HttpResponseRedirect(t.render(c))
+					return HttpResponse(t.render(c))
 		    		except:
 		    			err_msg="Wrong scratch code"
 		    			boolexp='True'
