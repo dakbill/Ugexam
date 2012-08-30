@@ -8,6 +8,7 @@ import shlex
 #from django.utils.html import *
 import dj_simple_sms
 from django.views.decorators.csrf import csrf_exempt
+from django.core.exceptions import ObjectDoesNotExist
 def sms_search(sms):
         msg= sms.body.strip()
 	lis=shlex.split(msg)
@@ -68,7 +69,7 @@ def home(request):
 		    		t = loader.get_template('login/login.html')
 		    		c = Context({'error':err_msg,'boolexp':boolexp})
 				return HttpResponse(t.render(c))
-		except:
+		except ObjectDoesNotExist:
 			err_msg="Voucher or account does not exist"
 	    		boolexp='True'
 	    		t = loader.get_template('login/login.html')
