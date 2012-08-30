@@ -25,9 +25,9 @@
 				<p>
 				</p>
 				</div>
-				<form method='POST' action=''>
+				<form method='POST' action='/'>
 				<input type="text" class="input" placeholder="{%if boolexp == 'True' %}{{error}}{%else%} {{'Enter card details here'}}{%endif%}" name="scratchcode"><br>
-				<button type="submit" class="btn btn-primary pull-left">Proceed</button>
+				<button type="submit" class="btn btn-primary pull-left">Save</button>
 				</form>
 				</div>
 		{%endblock%}
