@@ -41,40 +41,35 @@ def home(request):
 	if request.method=='POST':
 		scode=request.POST.get("scratchcode")		
 		lis=shlex.split(scode)
-		try:	
-			vouch=Voucher.objects.get(num=lis[1])			
-			if(not vouch.used):			
-				try:			
-					cust=Account.objects.get(accnum=lis[0])
-					cust.balance=cust.balance+vouch.amount
-					vouch.Account=cust
-					vouch.date_used=datetime.now()
-					vouch.used=True			
-					boolexp='False'					
-					vouch.save()
-					cust.save()
-					t = loader.get_template('login/login.html')
-					err_msg=""
-		    			c = Context({'error':err_msg,'boolexp':boolexp})
-					return HttpResponse(t.render(c))
-		    		except:
-		    			err_msg="Wrong scratch code"
-		    			boolexp='True'
-		    			t = loader.get_template('login/login.html')
-		    			c = Context({'error':err_msg,'boolexp':boolexp})
-					return HttpResponse(t.render(c))
-			else:
-				err_msg="Voucher already used"
+		print lis
+		try:
+			vouch=Voucher.objects.get(num=lis[1])
+			if(not vouch.used):						
+				cust=Account.objects.get(accnum=lis[0])
+				cust.balance=cust.balance+vouch.amount
+				vouch.Account=cust
+				vouch.date_used=datetime.now()
+				vouch.used=True			
+				boolexp='False'					
+				vouch.save()
+				cust.save()
+				t = loader.get_template('login/login.html')
+				err_msg=""
+		    		c = Context({'error':err_msg,'boolexp':boolexp})
+				return HttpResponse(t.render(c))
+		    	else:
+		    		err_msg="Wrong scratch code"
 		    		boolexp='True'
 		    		t = loader.get_template('login/login.html')
 		    		c = Context({'error':err_msg,'boolexp':boolexp})
 				return HttpResponse(t.render(c))
-		except:
+		except ObjectDoesNotExist:
 			err_msg="Voucher or account does not exist"
 	    		boolexp='True'
 	    		t = loader.get_template('login/login.html')
 	    		c = Context({'error':err_msg,'boolexp':boolexp})
 			return HttpResponse(t.render(c))
+			
 	t = loader.get_template('login/login.html')
 	err_msg=""
 	boolexp='False'
