@@ -6,6 +6,7 @@ from django.template import Context, loader
 from django.http import HttpResponse, HttpResponseRedirect
 import shlex
 #from django.utils.html import *
+from django.http import QueryDict
 import dj_simple_sms
 from django.views.decorators.csrf import csrf_exempt
 from django.core.exceptions import ObjectDoesNotExist
@@ -17,8 +18,6 @@ def sms_search(sms):
 	else:
 				
 		try:					
-			print lis[1]
-			print lis[0]		
 			vouch=Voucher.objects.get(num=lis[1])			
 			cust=Account.objects.get(accnum=lis[0])
 			cust.balance=cust.balance+1
@@ -39,9 +38,8 @@ def sms_search(sms):
 @csrf_exempt
 def home(request):
 	if request.method=='POST':
-		scode=request.POST.get("scratchcode")		
+		scode=str(request.POST.get(r"scratchcode"))		
 		lis=shlex.split(scode)
-		print lis
 		try:
 			vouch=Voucher.objects.get(num=lis[1])
 			if(not vouch.used):						
