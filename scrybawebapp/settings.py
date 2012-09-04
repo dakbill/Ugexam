@@ -13,7 +13,7 @@ ADMINS = (
 MANAGERS = ADMINS
 DATABASES = {
     'default' :
-	dj_database_url.config(default="sqlite:/susu.db")
+	dj_database_url.config(default="mysql:/susu.db")
 
 }
 # Local time zone for this installation. Choices can be found here:
@@ -113,8 +113,8 @@ INSTALLED_APPS = (
      'django.contrib.admin',
      'recrep',
      'dj_simple_sms',
-     #'south',
-     #'piston',
+     'south',
+     'piston',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
