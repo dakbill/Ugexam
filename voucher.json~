@@ -1,0 +1,11 @@
+[
+  {
+    "model": "recrep.Voucher",
+    "pk": 3,
+    "fields": {
+      "num": "1235",
+	"date_used":"1992-02-21",
+      "amount": 1
+    }
+  }
+]
