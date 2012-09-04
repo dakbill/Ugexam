@@ -13,7 +13,7 @@ ADMINS = (
 MANAGERS = ADMINS
 DATABASES = {
     'default' :
-	dj_database_url.config(default="mysql:/susu.db")
+	dj_database_url.config(default="postgres:/susu.db")
 
 }
 # Local time zone for this installation. Choices can be found here:
