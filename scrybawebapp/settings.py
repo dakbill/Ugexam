@@ -113,7 +113,7 @@ INSTALLED_APPS = (
      'django.contrib.admin',
      'recrep',
      'dj_simple_sms',
-     'south',
+     #'south',
      #'piston',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
