@@ -1,9 +1,7 @@
+requests==0.13.8
 Django==1.4.1
-psycopg2==2.4.5
 South==0.7.6
 dj-database-url==0.2.1
 django-piston==0.2.3
-oauth==1.0.1
-piston-mini-client==0.7.2
-psycopg2==2.4.5
-dj-database-url==0.2.0
+requests==0.13.8
+
