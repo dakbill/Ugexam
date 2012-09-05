@@ -68,6 +68,11 @@ def home(request):
 	    		t = loader.get_template('login/login.html')
 	    		c = Context({'error':err_msg,'boolexp':boolexp})
 			return HttpResponse(t.render(c))
+	err_msg="Voucher or account does not exist"
+	boolexp='True'
+	t = loader.get_template('login/login.html')
+	c = Context({'error':err_msg,'boolexp':boolexp})
+	return HttpResponse(t.render(c))
 @csrf_exempt
 def whatsapp(request):
 	code=open("output.txt","r")
