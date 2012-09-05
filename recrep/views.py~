@@ -5,7 +5,7 @@ from datetime import timedelta
 from django.template import Context, loader
 from django.http import HttpResponse, HttpResponseRedirect
 import shlex
-import request
+import requests
 from django.http import QueryDict
 import dj_simple_sms
 from django.views.decorators.csrf import csrf_exempt
@@ -93,7 +93,7 @@ def send(request):
 					sendthis=sendthis+str(voucher.date_used.strftime("%A")[:3])+"+"+str(voucher.amount)+"gh+"
 				sendthis=sendthis+"total+account+balance:+"+str(customer.balance)
 				sendthis=sendthis+"&sender_id=scrybaweb"				
-				request.post(sendthis)				
+				requests.post(sendthis)				
 				msgque.append(sendthis)
 			t = loader.get_template('login/send.html')
     			c = Context({'msgque':msgque})
