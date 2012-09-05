@@ -86,13 +86,10 @@ def whatsapp(request):
 					vouch.save()
 					cust.save()
 	    			else:
-					print "used"					
 					pass		    			
 			except ObjectDoesNotExist:
-				print "not in"
 				pass
 		else:
-			print "wrong format"
 			pass				
 	return HttpResponse("end of process")
 

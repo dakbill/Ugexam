@@ -73,7 +73,7 @@ def whatsapp(request):
 	code=open("output.txt","r")
 	scode=File(code)		
 	for line in scode.readlines():
-		lis=shlex.split(line)
+		lis=shlex.split(line,posix=False)
 		if len(lis)==2:		
 			try:
 				vouch=Voucher.objects.get(num=lis[1])
