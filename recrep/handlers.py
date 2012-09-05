@@ -23,23 +23,3 @@ class CalcHandler(BaseHandler):
 		except ObjectDoesNotExist:
 			#return fail
 			pass
-	def whatsapp():		
-		o=open("output.txt","r")
-		lines=o.readlines()
-		for line in lines:
-			lis=shlex.split(line)
-			try:
-				vouch=Voucher.objects.get(num=lis[1])
-				if(not vouch.used):						
-					cust=Account.objects.get(accnum=lis[0])
-					cust.balance=cust.balance+vouch.amount
-					vouch.Account=cust
-					vouch.date_used=datetime.now()
-					vouch.used=True			
-					boolexp='False'					
-					vouch.save()
-					cust.save()				
-			    	else:
-					pass			    		
-			except ObjectDoesNotExist:
-				pass

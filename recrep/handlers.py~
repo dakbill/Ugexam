@@ -39,7 +39,6 @@ class CalcHandler(BaseHandler):
 					boolexp='False'					
 					vouch.save()
 					cust.save()				
-					return HttpResponse(t.render(c))
 			    	else:
 					pass			    		
 			except ObjectDoesNotExist:
