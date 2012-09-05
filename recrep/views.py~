@@ -93,7 +93,7 @@ def send(request):
 					sendthis=sendthis+str(voucher.date_used.strftime("%A")[:3])+"+"+str(voucher.amount)+"gh+"
 				sendthis=sendthis+"total+account+balance:+"+str(customer.balance)
 				sendthis=sendthis+"&sender_id=scrybaweb"				
-				requests.post(sendthis)				
+				request.post(sendthis)				
 				msgque.append(sendthis)
 			t = loader.get_template('login/send.html')
     			c = Context({'msgque':msgque})
