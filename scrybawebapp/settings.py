@@ -114,7 +114,6 @@ INSTALLED_APPS = (
      'recrep',
      'dj_simple_sms',
      'south',
-    'tastypie',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
