@@ -87,7 +87,7 @@ def send(request):
 			for customer in cust:
 				vouch=Voucher.objects.filter(Account=customer,date_used__range=[dateList[0],dateList[6]])				
 				sendthis="http://bulk.mnotification.com/smsapi?key=2c3cebd22fb6165535ab&to="
-				sendthis=sendthis+(cust.phone)
+				sendthis=sendthis+(customer.phone)
 				sendthis=sendthis+"&msg=this+week:+"
 				for voucher in vouch:
 					sendthis=sendthis+str(voucher.date_used.strftime("%A")[:3])+"+"+str(voucher.amount)+"gh+"
