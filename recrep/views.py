@@ -68,7 +68,7 @@ def home(request):
 	    		t = loader.get_template('login/login.html')
 	    		c = Context({'error':err_msg,'boolexp':boolexp})
 			return HttpResponse(t.render(c))
-	err_msg="Voucher or account does not exist"
+	err_msg="Start Fresh Input"
 	boolexp='True'
 	t = loader.get_template('login/login.html')
 	c = Context({'error':err_msg,'boolexp':boolexp})
