@@ -5,5 +5,3 @@ dj-database-url==0.2.1
 django-piston==0.2.3
 oauth==1.0.1
 piston-mini-client==0.7.2
-psycopg2==2.4.5
-dj-database-url==0.2.0
