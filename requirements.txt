@@ -3,5 +3,4 @@ Django==1.4.1
 South==0.7.6
 dj-database-url==0.2.1
 django-piston==0.2.3
-requests==0.13.8
 psycopg2==2.4.5
