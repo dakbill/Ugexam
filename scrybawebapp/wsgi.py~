@@ -14,7 +14,8 @@ framework.
 
 """
 import os
-
+import site
+site.addsitedir('/usr/local/pythonenv/PYLONS-1/lib/python2.5/site-packages')
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "scrybawebapp.settings")
 
 # This application object is used by any WSGI server configured to use this
